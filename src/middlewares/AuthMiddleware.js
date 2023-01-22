@@ -2,7 +2,7 @@ import dayjs from "dayjs";
 import db from "../database.js";
 
 export async function auth (req, res, next) {
-  const token = req.headers.authorization.replace('Bearer ', '');
+  const token = req.headers.authorization?.replace('Bearer ', '');
 
   if (!token) return res.sendStatus(401);
 

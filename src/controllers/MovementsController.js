@@ -1,12 +1,12 @@
 import db from "../database.js";
 import { Movement } from '../models/Movement.js';
 import { validateStoreMovementSchema } from '../validations/storeMovementSchema.js';
+
 export async function list (req, res) {
   const authId = res.locals.authId;
 
   try {
     const movements = await db.collection("movements").find({ user_id: authId }).toArray();
-
     return res.send(movements);
   } catch (error) {
     console.log(error);
